@@ -1,0 +1,14 @@
+
+# Azure  CLI Plugin
+az login with service principal
+az acs kubernetes get-credentials --resource-group=myK8sCluster --name=myK8sCluster
+
+
+# Docker build and publish
+
+Repository Name	torosent/k8s-cicd
+Tag	${BUILD_NUMBER}
+
+# Execute Shell plugin
+WEB_IMAGE_NAME="torosent/k8s-cicd:${BUILD_NUMBER}"
+kubectl set image deployment/k8s-cicd k8s-cicd=$WEB_IMAGE_NAME --kubeconfig /var/lib/jenkins/.kube/config
