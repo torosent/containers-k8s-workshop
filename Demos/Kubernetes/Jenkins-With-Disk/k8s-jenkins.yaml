@@ -1,0 +1,48 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: jenkins
+  labels:
+   app: jenkins
+spec:
+  selector:
+    app: jenkins
+  ports:
+  - protocol: "TCP"
+    port: 8080
+  type: LoadBalancer
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jenkins
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      containers:
+      - name: jenkins-azurecli-kubectl
+        image: torosent/jenkins-azurecli-kubectl:1.0.4
+        ports:
+        - containerPort: 8080
+        - containerPort: 50000
+        volumeMounts:
+        - mountPath: /var/jenkins_home
+          name: jenkins-home
+          subPath: jenkins_home
+        resources:
+          #limits:
+          #  cpu: 1500m
+          #requests:
+          #  cpu:  1500m
+      securityContext:
+        fsGroup: 1000
+      volumes:
+      - name: jenkins-home
+        persistentVolumeClaim:
+          claimName: jenkinsclaim

@@ -1,0 +1,137 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: webstore
+  labels:
+   app: webstore
+spec:
+  selector:
+    app: webstore
+  ports:
+  - protocol: "TCP"
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: webstore-deployment
+spec:
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      # unlike pod-nginx.yaml, the name is not included in the meta data as a unique name is
+      # generated from the deployment name
+      labels:
+        app: webstore
+    spec:
+      containers:
+      - name: webstore
+        image: torosent/webstore:1.0.10
+        ports:
+        - containerPort: 3000
+        env:
+        - name: ORDER_SERVICE
+          value: "http://orderservice/api/order"
+        - name: STATUS_SERVICE
+          value: "http://statusservice/api/status"        
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: printingservice-deployment
+spec:
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      # unlike pod-nginx.yaml, the name is not included in the meta data as a unique name is
+      # generated from the deployment name
+      labels:
+        app: printingservice
+    spec:
+      containers:
+      - name: printingservice
+        image: torosent/printingservice:1.0.7
+        imagePullPolicy: Always
+        env:
+        - name: SBConnectionString
+          value: "Endpoint=sb://k8sworkshopsb.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=j9ulQyJLjjNM+A7HMX/+iHKzrAUDgm9wdBn5V9YNJCE="
+        - name: StorageConnectionString
+          value: "DefaultEndpointsProtocol=https;AccountName=k8sworkshop;AccountKey=Hln8q5AioFVtEKf47CNVJ8wB6D5G/oy9WUgb/TdNtK2nH/fzL18QnwebSVHdgnEbV9ivQ4qbjsBlzcu3VyBTFw==;EndpointSuffix=core.windows.net"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: orderservice
+  labels:
+   app: orderservice
+spec:
+  selector:
+    app: orderservice
+  ports:
+  - protocol: "TCP"
+    port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: orderservice-deployment
+spec:
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      # unlike pod-nginx.yaml, the name is not included in the meta data as a unique name is
+      # generated from the deployment name
+      labels:
+        app: orderservice
+    spec:
+      containers:
+      - name: orderservice
+        image: torosent/orderservice:1.0.0
+        ports:
+        - containerPort: 80
+        env:
+        - name: SBConnectionString
+          value: "Endpoint=sb://k8sworkshopsb.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=j9ulQyJLjjNM+A7HMX/+iHKzrAUDgm9wdBn5V9YNJCE=;"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: statusservice
+  labels:
+   app: statusservice
+spec:
+  selector:
+    app: statusservice
+  ports:
+  - protocol: "TCP"
+    port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: statusservice-deployment
+spec:
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      # unlike pod-nginx.yaml, the name is not included in the meta data as a unique name is
+      # generated from the deployment name
+      labels:
+        app: statusservice
+    spec:
+      containers:
+      - name: statuservice
+        image: torosent/statusservice:1.0.1
+        ports:
+        - containerPort: 80
+        env:
+        - name: StorageConnectionString
+          value: "DefaultEndpointsProtocol=https;AccountName=k8sworkshop;AccountKey=Hln8q5AioFVtEKf47CNVJ8wB6D5G/oy9WUgb/TdNtK2nH/fzL18QnwebSVHdgnEbV9ivQ4qbjsBlzcu3VyBTFw==;EndpointSuffix=core.windows.net"
+
+
+        
