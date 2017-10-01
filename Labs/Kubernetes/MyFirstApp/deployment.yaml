@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: myfirstapp-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: myfirstapp
+    spec:
+      containers:
+      - name: myfirstapp
+        image: torosent/myfirstapp:latest
+        ports:
+        - containerPort: 80

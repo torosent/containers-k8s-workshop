@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: myfirstapp-service
+  labels:
+   app: myfirstapp
+spec:
+  selector:
+    app: myfirstapp
+  ports:
+  - protocol: "TCP"
+    port: 80
+  type: LoadBalancer

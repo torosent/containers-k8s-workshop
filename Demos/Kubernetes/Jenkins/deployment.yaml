@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: k8s-cicd-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: k8s-cicd
+    spec:
+      containers:
+      - name: k8s-cicd
+        image: torosent/k8s-cicd:latest
+        ports:
+        - containerPort: 3000
