@@ -56,10 +56,16 @@ spec:
         image: torosent/printingservice:1.0.7
         imagePullPolicy: Always
         env:
-        - name: SBConnectionString
-          value: "Endpoint=sb://k8sworkshopsb.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=j9ulQyJLjjNM+A7HMX/+iHKzrAUDgm9wdBn5V9YNJCE="
-        - name: StorageConnectionString
-          value: "DefaultEndpointsProtocol=https;AccountName=k8sworkshop;AccountKey=Hln8q5AioFVtEKf47CNVJ8wB6D5G/oy9WUgb/TdNtK2nH/fzL18QnwebSVHdgnEbV9ivQ4qbjsBlzcu3VyBTFw==;EndpointSuffix=core.windows.net"
+          - name: SBConnectionString
+            valueFrom:
+              secretKeyRef:
+                name: StickerStore
+                key: SBConnectionString
+          - name: StorageConnectionString
+            valueFrom:
+              secretKeyRef:
+                name: StickerStore
+                key: StorageConnectionString
 ---
 kind: Service
 apiVersion: v1
@@ -95,7 +101,10 @@ spec:
         - containerPort: 80
         env:
         - name: SBConnectionString
-          value: "Endpoint=sb://k8sworkshopsb.servicebus.windows.net/;SharedAccessKeyName=Root;SharedAccessKey=j9ulQyJLjjNM+A7HMX/+iHKzrAUDgm9wdBn5V9YNJCE=;"
+            valueFrom:
+              secretKeyRef:
+                name: StickerStore
+                key: SBConnectionString
 ---
 kind: Service
 apiVersion: v1
@@ -131,7 +140,10 @@ spec:
         - containerPort: 80
         env:
         - name: StorageConnectionString
-          value: "DefaultEndpointsProtocol=https;AccountName=k8sworkshop;AccountKey=Hln8q5AioFVtEKf47CNVJ8wB6D5G/oy9WUgb/TdNtK2nH/fzL18QnwebSVHdgnEbV9ivQ4qbjsBlzcu3VyBTFw==;EndpointSuffix=core.windows.net"
+            valueFrom:
+              secretKeyRef:
+                name: StickerStore
+                key: StorageConnectionString
 
 
         
