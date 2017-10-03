@@ -1,5 +1,5 @@
-docker build -t helloworld .
-docker run --rm -p 3000:80 helloworld
-
+docker build -t myfirstapp .
+docker run --name myfirstapp --rm -p 3000:80 myfirstapp
+docker ps -a
 docker run --name some-redis -d redis
-docker run --name helloworld -p 3000:80 --link some-redis:redis -d helloworld
+docker run --name myfirstapp -p 3000:80 --link some-redis:redis -d myfirstapp

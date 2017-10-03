@@ -1,5 +1,7 @@
 # Without external storage
-docker run -v -d mongo
+docker run --name mongodb -v -d mongo
+docker ps -a 
+docker rm mongodb
 
 # With external storage
-docker run -v /Users/torosent/MongoDBData:/data/db -d mongo
+docker run --name mongodb -v /Users/torosent/MongoDBData:/data/db -d mongo

@@ -1,5 +1,17 @@
+#! /bin/sh
+
+# create resource group
 az group create --name myResourceGroup --location westeurope
-az container create --name mycontainer --image microsoft/aci-helloworld --resource-group myResourceGroup --ip-address public
+
+# create aci 
+az container create --name mycontainer --image tutum/hello-world --resource-group myResourceGroup --ip-address public
+
+# show details and public ip
 az container show --name mycontainer --resource-group myResourceGroup
+
+# show logs
 az container logs --name mycontainer --resource-group myResourceGroup
+
+# delete everything
 az container delete --name mycontainer --resource-group myResourceGroup
+az group delete -n myResourceGroup --yes
