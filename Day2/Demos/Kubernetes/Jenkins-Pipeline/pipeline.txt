@@ -4,7 +4,7 @@ az login with service principal
 az acs kubernetes get-credentials --resource-group=myK8sCluster --name=myK8sCluster
 
 
-# Docker build and publish
+# Docker build and publish plugin
 
 Repository Name	torosent/k8s-cicd
 Tag	${BUILD_NUMBER}
