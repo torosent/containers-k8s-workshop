@@ -65,7 +65,7 @@ using Microsoft.WindowsAzure.Storage.Table;
             // Process the message
             Console.WriteLine($"Received message: SequenceNumber:{message.SystemProperties.SequenceNumber} Body:{body}");
 
-            const string version = "1.0.7";
+            const string version = "1.0.8";
             body = $"{body} ; Printer version: {version}";
 
             InsertRowToTableStorage(body);

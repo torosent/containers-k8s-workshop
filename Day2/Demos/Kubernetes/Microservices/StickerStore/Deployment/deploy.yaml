@@ -19,11 +19,9 @@ kind: Deployment
 metadata:
   name: webstore-deployment
 spec:
-  replicas: 1 # tells deployment to run 2 pods matching the template
+  replicas: 1 # tells deployment to run 1 pods matching the template
   template: # create pods using pod definition in this template
     metadata:
-      # unlike pod-nginx.yaml, the name is not included in the meta data as a unique name is
-      # generated from the deployment name
       labels:
         app: webstore
     spec:
@@ -46,8 +44,6 @@ spec:
   replicas: 1 # tells deployment to run 2 pods matching the template
   template: # create pods using pod definition in this template
     metadata:
-      # unlike pod-nginx.yaml, the name is not included in the meta data as a unique name is
-      # generated from the deployment name
       labels:
         app: printingservice
     spec:
@@ -59,12 +55,12 @@ spec:
           - name: SBConnectionString
             valueFrom:
               secretKeyRef:
-                name: StickerStore
+                name: stickerstore
                 key: SBConnectionString
           - name: StorageConnectionString
             valueFrom:
               secretKeyRef:
-                name: StickerStore
+                name: stickerstore
                 key: StorageConnectionString
 ---
 kind: Service
@@ -86,11 +82,9 @@ kind: Deployment
 metadata:
   name: orderservice-deployment
 spec:
-  replicas: 1 # tells deployment to run 2 pods matching the template
+  replicas: 1 # tells deployment to run 1 pods matching the template
   template: # create pods using pod definition in this template
     metadata:
-      # unlike pod-nginx.yaml, the name is not included in the meta data as a unique name is
-      # generated from the deployment name
       labels:
         app: orderservice
     spec:
@@ -101,10 +95,10 @@ spec:
         - containerPort: 80
         env:
         - name: SBConnectionString
-            valueFrom:
-              secretKeyRef:
-                name: StickerStore
-                key: SBConnectionString
+          valueFrom:
+            secretKeyRef:
+              name: stickerstore
+              key: SBConnectionString
 ---
 kind: Service
 apiVersion: v1
@@ -125,11 +119,9 @@ kind: Deployment
 metadata:
   name: statusservice-deployment
 spec:
-  replicas: 1 # tells deployment to run 2 pods matching the template
+  replicas: 1 # tells deployment to run 1 pods matching the template
   template: # create pods using pod definition in this template
     metadata:
-      # unlike pod-nginx.yaml, the name is not included in the meta data as a unique name is
-      # generated from the deployment name
       labels:
         app: statusservice
     spec:
@@ -140,10 +132,10 @@ spec:
         - containerPort: 80
         env:
         - name: StorageConnectionString
-            valueFrom:
-              secretKeyRef:
-                name: StickerStore
-                key: StorageConnectionString
+          valueFrom:
+            secretKeyRef:
+              name: stickerstore
+              key: StorageConnectionString
 
 
         
