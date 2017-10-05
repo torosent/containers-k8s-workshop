@@ -11,7 +11,11 @@ kubectl create -f secret.yaml
 kubectl create -f eph.yaml
 
 # Define autoscale
-kubectl autoscale deployment eph --cpu-percent=50 --min=1 --max=10
+kubectl autoscale deployment eph --cpu-percent=30 --min=1 --max=32
 
-# Simulate cars with event hub loader from local machine with messages and see them in CosmosDB
-docker run --rm -it -e NAMESPACE=<namespace> -e EH_NAME=<eh_name> -e SAS_KEY_NAME=<sas_key_name> -e SAS_KEY <sas_key>  torosent/ehsender
+# Simulate cars with event hub loader with messages and see them in CosmosDB
+kubectl create -f ehsender.yaml
+
+# Get deployment metrics
+kubectl get hpa
+

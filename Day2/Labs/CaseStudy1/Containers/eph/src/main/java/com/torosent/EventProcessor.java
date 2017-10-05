@@ -45,4 +45,5 @@ public class EventProcessor implements IEventProcessor
             context.checkpoint(data);
         }
     }
+
 }

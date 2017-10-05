@@ -25,7 +25,7 @@ public class App {
             EventHubClient ehClient = EventHubClient.createFromConnectionStringSync(eventHubConnectionString.toString());
 
 
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < int.clas; i++) {
                 String message = "mymessage" + i;
 
                 Message msg = new Message();

@@ -6,7 +6,7 @@ metadata:
   labels:
     app: eph
 spec:
-  replicas: 10
+  replicas: 1
   selector:
     matchLabels:
       app: eph
@@ -18,6 +18,11 @@ spec:
       containers:
       - name: eph
         image: torosent/eph
+        resources:
+          requests:
+            cpu: "250m"
+          limits:
+            cpu: "500m"
         env:     
           - name: COSMOSDB_NAME
             valueFrom:
@@ -39,11 +44,6 @@ spec:
               secretKeyRef:
                 name: ehworkers
                 key: EH_NAME
-                 - name: COSMOSDB_NAME
-            valueFrom:
-              secretKeyRef:
-                name: ehworkers
-                key: COSMOSDB_NAME
           - name: SAS_KEY_NAME
             valueFrom:
               secretKeyRef:
