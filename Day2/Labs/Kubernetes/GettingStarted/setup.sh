@@ -11,3 +11,6 @@ az acs kubernetes install-cli
 
 # Connect kubectl to cluster
 az acs kubernetes get-credentials --resource-group=myK8sCluster --name=myK8sCluster
+
+# Proxy to the dashboard
+kubectl proxy

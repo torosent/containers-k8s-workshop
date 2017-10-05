@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
       - name: myfirstapp
-        image: torosent/myfirstapp:latest
+        image: torosent/friendlyhello:latest
         ports:
         - containerPort: 80
