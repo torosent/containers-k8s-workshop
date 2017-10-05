@@ -29,7 +29,6 @@ docker101.docx - Create MyFirstApp container and deploy to Azure Web App on Linu
 
 ### Labs
 
-1. Kubernetes/GettingStarted - provision new k8s cluster
-2. Kubernetes/MyFirstApp - deploy MyFirstApp with external service
-3. CaseStudy 1
-4. CaseStudy 2
+1. k8s.docx
+2. CaseStudy 1
+3. CaseStudy 2
