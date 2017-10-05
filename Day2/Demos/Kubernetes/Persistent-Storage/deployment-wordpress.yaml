@@ -14,23 +14,6 @@ spec:
 
 ---
 
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: wp-pv-claim
-  labels:
-    app: wordpress
-  annotations: 
-    volume.beta.kubernetes.io/storage-class: fast
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 32Gi
-
----
-
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
