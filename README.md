@@ -23,8 +23,9 @@ docker101.docx - Create MyFirstApp container and deploy to Azure Web App on Linu
 
 1. Hello-World - deployment with versions.
 2. Persistent-Storage - deploy Wordpress, MySQL with external storage
-2. Microservices - deployment,scale and versioning of microservice app.
-3. Jenkins-Pipeline - create k8s deployment with Jenkins.
+3. Microservices - deployment,scale and versioning of microservice app.
+4. Helm - deployment of helm chart
+5. Jenkins-Pipeline - create k8s deployment with Jenkins.
 
 ### Labs
 
