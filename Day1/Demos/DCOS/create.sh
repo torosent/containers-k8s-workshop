@@ -5,11 +5,11 @@ acsname=myDCOSCluster
 # create resource group
 az group create --name  $rg --location northeurope
 
-# create dcos
+# create dcos with generate keys
 az acs create --orchestrator-type dcos --resource-group $rg --name  $acsname --generate-ssh-keys
 
-# connect to dcos
-ip=$(az network public-ip list --resource-group $rg --query "[?contains(name,'dcos-master')].[ipAddress]" -o tsv)
-sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
+# create dcos with predefined keys
+az acs create --orchestrator-type dcos --resource-group $rg --name  $acsname --ssh-key-value /users/torosent/.ssh/id_rsa.pub
+
 
 

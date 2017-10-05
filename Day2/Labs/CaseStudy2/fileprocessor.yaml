@@ -23,7 +23,7 @@ spec:
             value:
           - name: QUEUE_NAME
             value:
-         - name: SB_CONNECTION_STRING
+          - name: SB_CONNECTION_STRING
             valueFrom:
               secretKeyRef:
                 name: casestudy2
