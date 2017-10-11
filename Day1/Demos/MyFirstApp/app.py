@@ -5,6 +5,7 @@ import socket
 
 # Connect to Redis
 redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
+#redis = Redis(host=os.environ['REDIS'], db=0, socket_connect_timeout=2, socket_timeout=2)
 
 app = Flask(__name__)
 
