@@ -10,8 +10,8 @@ az container create --name mycontainer --image tutum/hello-world --resource-grou
 az container show --name mycontainer --resource-group myResourceGroup
 
 # show logs
-az container logs --name mycontainer --resource-group myResourceGroup
+#az container logs --name mycontainer --resource-group myResourceGroup
 
 # delete everything
-az container delete --name mycontainer --resource-group myResourceGroup
-az group delete -n myResourceGroup --yes
+#az container delete --name mycontainer --resource-group myResourceGroup
+#az group delete -n myResourceGroup --yes
