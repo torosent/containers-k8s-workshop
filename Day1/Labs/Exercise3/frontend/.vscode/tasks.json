@@ -1,0 +1,16 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "taskName": "Build and Run Container",
+            "type": "shell",
+            "command": "docker build . -t debugcontainer && docker run -d -v $(pwd):/code -p 8182:8000 -p 9339:9339 debugcontainer nodemon --inspect-brk=0.0.0.0:9339",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
