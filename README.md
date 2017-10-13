@@ -5,10 +5,10 @@
 ### Demos
 
 1. Hello-World - hello world app on local machine.
-2. MyFirstApp - Dockerfile & docker build demos.
+2. MyFirstApp - Dockerfile & docker build demos. - Reference https://docs.docker.com/get-started/part2/
 3. MyFirstApp-DockerHub - push MyFirstApp to DockerHub and pull the image back.
 4. Docker-Storage - MongoDB container with persistent storage.
-5. Docker-Compose - Wordpress with MySQL deployment.
+5. Docker-Compose - Wordpress with MySQL deployment. - Reference https://docs.docker.com/compose/wordpress/
 6. DC/OS - Deployment.
 7. Swarm - Deployment.
 8. ACI - Azure Container Instances demo.
