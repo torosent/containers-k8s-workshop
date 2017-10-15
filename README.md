@@ -25,7 +25,8 @@ docker101.docx - Create MyFirstApp container and deploy to Azure Web App on Linu
 2. Persistent-Storage - deploy Wordpress, MySQL with external storage
 3. Microservices - deployment,scale and versioning of microservice app.
 4. Helm - deployment of helm chart
-5. Jenkins-Pipeline - create k8s deployment with Jenkins.
+5. DataDog Monitoring - deployment of datadog helm chart
+6. Jenkins-Pipeline - create k8s deployment with Jenkins.
 
 ### Labs
 
