@@ -9,7 +9,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 # Bundle app source
-COPY . .
+COPY . /usr/src/app
 
 EXPOSE 3000
 CMD ["node","index.js"]

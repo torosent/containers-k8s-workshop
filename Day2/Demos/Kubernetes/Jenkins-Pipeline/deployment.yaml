@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: extentions/v1beta1
 kind: Deployment
 metadata:
   name: k8s-cicd-deployment
@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
       - name: k8s-cicd
-        image: torosent/k8s-cicd:latest
+        image: torosent/k8s-cicd:$BUILD_NUMBER
         ports:
         - containerPort: 3000
