@@ -14,7 +14,7 @@ spec:
     targetPort: 3000
   type: LoadBalancer
 ---
-apiVersion: apps/v1beta1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: webstore-deployment
@@ -36,7 +36,7 @@ spec:
         - name: STATUS_SERVICE
           value: "http://statusservice/api/status"        
 ---
-apiVersion: apps/v1beta1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: printingservice-deployment
@@ -77,7 +77,7 @@ spec:
     port: 80
     targetPort: 80
 ---
-apiVersion: apps/v1beta1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: orderservice-deployment
@@ -114,7 +114,7 @@ spec:
     port: 80
     targetPort: 80
 ---
-apiVersion: apps/v1beta1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: statusservice-deployment
