@@ -1,21 +1,17 @@
 #! /bin/sh
 
-# Create Event Hub with 32 partitions - Only from the Portal. CLI Not supported
-# Create CosmosDB - Portal
-# Create Storage Account for Event Hub Processor Host Logic - Portal
+vmname="jenkinscicd"
+rg="jenkins-RG"
+user="azureuser"
+ssh="/home/tomer/clouddrive/.ssh/id_rsa.pub"
+location="northeurope"
+size="Standard_D2S_V3"
 
-# Deploy the secret for the Event Hub,Storage for EH and CosmosDB Credentials
-kubectl create -f secret.yaml
+az group create -n $rg -l $location
+az vm create -n $vmname -g $rg --image UbuntuLTS --size $size --admin-username $user --ssh-key-value $ssh --public-ip-address-allocation static --nsg-rule SSH
+az vm extension set --resource-group $rg --vm-name $vmname --name customScript --publisher Microsoft.Azure.Extensions --settings ./jenkins-config.json
 
-# Deploy the Event Hub processors
-kubectl create -f eph.yaml
+az vm restart -n $vmname -g $rg 
 
-# Define autoscale
-kubectl autoscale deployment eph --cpu-percent=30 --min=1 --max=32
-
-# Simulate cars with event hub loader with messages and see them in CosmosDB
-kubectl create -f ehsender.yaml
-
-# Get deployment metrics
-kubectl get hpa
-
+ssh -L 127.0.0.1:8080:localhost:8080 azureuser@<ip>
+#sudo cat /var/lib/jenkins/secrets/initialAdminPassword

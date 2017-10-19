@@ -1,15 +1,21 @@
 #! /bin/sh
 
-# Create Service Bus Queue - Only from the Portal. CLI Not supported
+# Create Event Hub with 32 partitions - Only from the Portal. CLI Not supported
+# Create CosmosDB - Portal
+# Create Storage Account for Event Hub Processor Host Logic - Portal
 
-# Deploy the secret for the Service Bus Credencials (Service Principal)
+# Deploy the secret for the Event Hub,Storage for EH and CosmosDB Credentials
 kubectl create -f secret.yaml
 
-# Deploy the workers
-kubectl create -f fileprocessors.yaml
+# Deploy the Event Hub processors
+kubectl create -f eph.yaml
 
-# Deploy the pod autoscale
-kubectl create -f podautoscale.yaml
+# Define autoscale
+kubectl autoscale deployment eph --cpu-percent=30 --min=1 --max=32
 
-# Run Messageloader locally
-docker run -it --rm -e SB_CONNECTION_STRING=<sbconnection> -e QUEUE_NAME=<queuename> torosent/messagesender
+# Simulate cars with event hub loader with messages and see them in CosmosDB
+kubectl create -f ehsender.yaml
+
+# Get deployment metrics
+kubectl get hpa
+
