@@ -25,7 +25,8 @@ docker101.docx - Create MyFirstApp container and deploy to Azure Web App on Linu
 2. Persistent-Storage - deploy Wordpress, MySQL with external storage - `https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/`
 3. Microservices - deployment,scale and versioning of microservice app.
 4. Helm - deployment of helm chart
-5. DataDog Monitoring - deployment of datadog helm chart
+5. DataDog Monitoring - deployment of datadog helm chart.
+6. Jenkins-Pipeline - CI/CD.
 
 
 ### Labs
