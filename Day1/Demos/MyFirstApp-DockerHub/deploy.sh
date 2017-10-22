@@ -1,10 +1,11 @@
 #! /bin/sh
 
 # tag image
-docker tag helloworld torosent/helloworld:1.0.0
+docker tag myfirstapp torosent/myfirstapp:1.0.0
 
 # login to hub
 docker login
 
 # push to hub
-docker push torosent/helloworld:1.0.0
+docker push torosent/myfirstapp:1.0.0
+docker push torosent/myfirstapp
