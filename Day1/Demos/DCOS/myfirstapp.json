@@ -4,14 +4,14 @@
     "container": {
       "type": "DOCKER",
       "docker": {
-        "image": "torosent/friendlyhello",
+        "image": "torosent/myfirstapp",
         "network": "BRIDGE",
         "portMappings": [
           {
             "containerPort": 80,
             "hostPort": 0,
             "labels": {
-              "VIP_0": "/friendlyhello:80"
+              "VIP_0": "/myfirstapp:80"
             },
             "protocol": "tcp"
           }
