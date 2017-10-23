@@ -9,7 +9,7 @@ az group create --name  $rg --location northeurope
 #az acs create --orchestrator-type dcos --resource-group $rg --name  $acsname --generate-ssh-keys --agent-count 1
 
 # create dcos with predefined keys
-az acs create --orchestrator-type dcos --resource-group $rg --name  $acsname --ssh-key-value /users/torosent/.ssh/id_rsa.pub --agent-count 1
+az acs create --orchestrator-type dcos --resource-group $rg --name  $acsname --ssh-key-value ~/.ssh/id_rsa.pub --agent-count 1
 
 
 
