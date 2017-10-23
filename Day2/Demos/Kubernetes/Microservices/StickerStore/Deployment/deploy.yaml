@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: webstore
-        image: torosent/webstore:1.0.10
+        image: torosent/webstore:1.0.0
         ports:
         - containerPort: 3000
         env:
@@ -49,7 +49,7 @@ spec:
     spec:
       containers:
       - name: printingservice
-        image: torosent/printingservice:1.0.7
+        image: torosent/printingservice:1.0.0
         imagePullPolicy: Always
         env:
           - name: SBConnectionString
@@ -127,7 +127,7 @@ spec:
     spec:
       containers:
       - name: statuservice
-        image: torosent/statusservice:1.0.1
+        image: torosent/statusservice:1.0.0
         ports:
         - containerPort: 80
         env:

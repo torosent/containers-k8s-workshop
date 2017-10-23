@@ -6,7 +6,7 @@ metadata:
   labels:
     app: eph
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: eph
