@@ -1,5 +1,5 @@
 # Without external storage
-docker run --name mongodb -v -d mongo
+docker run --name mongodb -d mongo
 docker ps -a 
 docker rm mongodb
 
