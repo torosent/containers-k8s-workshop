@@ -1,7 +1,9 @@
 #! /bin/sh
+dgapikey=<YOUR-KEY-HERE>
+hname=dg-release 
 
-# install datadog helm chart
+# Install datadog helm chart
+helm install --name $hname --set datadog.apiKey=$dgapikey stable/datadog
 
-helm install --name dg-release --set datadog.apiKey=YOUR-KEY-HERE stable/datadog
-
+# REM Delete datadog helm chart
 # helm delete dg-release
