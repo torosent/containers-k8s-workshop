@@ -24,7 +24,7 @@ spec:
           - name: SB_CONNECTION_STRING
             valueFrom:
               secretKeyRef:
-                name: casestudy2
+                name: casestudy1
                 key: sb
           
                 
