@@ -1,0 +1,42 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: fast
+provisioner: kubernetes.io/azure-disk
+parameters:
+  skuName: Premium_LRS
+
+---
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mysql-pv-claim
+  labels:
+    app: mysql
+  annotations: 
+    volume.beta.kubernetes.io/storage-class: fast
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 32Gi
+---
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: wp-pv-claim
+  labels:
+    app: wordpress
+  annotations: 
+    volume.beta.kubernetes.io/storage-class: fast
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 32Gi
+
+---

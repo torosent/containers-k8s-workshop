@@ -1,0 +1,4 @@
+{
+    "fileUris": ["https://gist.githubusercontent.com/torosent/42060676f0f3ef52d014a2b5fb145932/raw/eed101567c1c126bd36a14813d234c327b0ac16d/installjenkins.sh"],
+    "commandToExecute": "./installjenkins.sh"
+}

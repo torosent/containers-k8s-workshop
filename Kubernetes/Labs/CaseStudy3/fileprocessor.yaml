@@ -1,0 +1,51 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: fileprocessor
+  labels:
+    app: fileprocessor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fileprocessor
+  template:
+    metadata:
+      labels:
+        app: fileprocessor
+    spec:
+      containers:
+      - name: fileprocessor
+        image: torosent/fileprocessor
+        env:   
+          - name: ADLS_ACCOUNT_NAME
+            value:
+          - name: QUEUE_NAME
+            value:
+          - name: SB_CONNECTION_STRING
+            valueFrom:
+              secretKeyRef:
+                name: casestudy2
+                key: sb
+          - name: AZURE_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: casestudy2
+                key: clientid
+          - name: AZURE_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: casestudy2
+                key: clientsecret
+          - name: AZURE_SUBSCRIPTION_ID
+            valueFrom:
+              secretKeyRef:
+                name: casestudy2
+                key: subscriptionid
+          - name: AZURE_TENANT_ID
+            valueFrom:
+              secretKeyRef:
+                name: casestudy2
+                key: tenantid
+                

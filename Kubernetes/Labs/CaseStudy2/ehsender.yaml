@@ -1,0 +1,42 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ehsender
+  labels:
+    app: ehsender
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ehsender
+  template:
+    metadata:
+      labels:
+        app: ehsender
+    spec:
+      containers:
+      - name: ehsender
+        image: torosent/ehsender
+        env:     
+          - name: NAMESPACE
+            valueFrom:
+              secretKeyRef:
+                name: ehworkers
+                key: NAMESPACE
+          - name: EH_NAME
+            valueFrom:
+              secretKeyRef:
+                name: ehworkers
+                key: EH_NAME
+          - name: SAS_KEY_NAME
+            valueFrom:
+              secretKeyRef:
+                name: ehworkers
+                key: SAS_KEY_NAME
+          - name: SAS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ehworkers
+                key: SAS_KEY
+                

@@ -17,7 +17,7 @@
 
 docker101.docx - Create MyFirstApp container and deploy to Azure Web App on Linux.
 
-## Day 2
+## Kubernetes
 
 ### Demos
 
@@ -26,14 +26,15 @@ docker101.docx - Create MyFirstApp container and deploy to Azure Web App on Linu
 3. Microservices - deployment,scale and versioning of microservice app.
 4. Helm - deployment of helm chart
 5. DataDog Monitoring - deployment of datadog helm chart.
-6. Jenkins-Pipeline - CI/CD.
+6. Jenkins - Install Jenkins with ACS and Docker plugins
+7. Jenkins-Pipeline - CI/CD.
+8. Secrets-Configmaps - deploy pods with config maps
 
 
 ### Labs
 
-1. k8s.docx
-2. CaseStudy 1 - Microservices, Casestudy1.docx `https://github.com/torosent/k8s-workshop-microservices`
-3. CaseStudy 2 - Data, Casestudy2.docx
+1. CaseStudy 1 - Microservices, Casestudy1.docx `https://github.com/torosent/k8s-workshop-microservices`
+2. CaseStudy 2 - Data, Casestudy2.docx
 
 ## Setup SSH port forwarding examples
 
