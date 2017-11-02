@@ -10,7 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "azure-arm-datalake-store": "^3.0.0-preview",
-    "azure-sb": "^0.10.5",
-    "mysql": "^2.14.1"
+    "azure-sb": "^0.10.5"
   }
 }

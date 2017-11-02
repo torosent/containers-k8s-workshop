@@ -1,8 +1,8 @@
 # Containers & K8S Workshop
 
-## Day 1
+## Docker, DC/OS and Swarm
 
-### Demos
+### Challenges
 
 1. Hello-World - hello world app on local machine.
 2. MyFirstApp - Dockerfile & docker build demos. - Reference `https://docs.docker.com/get-started/part2/`
@@ -19,7 +19,7 @@ docker101.docx - Create MyFirstApp container and deploy to Azure Web App on Linu
 
 ## Kubernetes
 
-### Demos
+### Challenges
 
 1. Hello-World - deployment with versions. - `https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/`
 2. Persistent-Storage - deploy Wordpress, MySQL with external storage - `https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/`
