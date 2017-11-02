@@ -26,26 +26,26 @@ spec:
           - name: SB_CONNECTION_STRING
             valueFrom:
               secretKeyRef:
-                name: casestudy2
+                name: casestudy1
                 key: sb
           - name: AZURE_CLIENT_ID
             valueFrom:
               secretKeyRef:
-                name: casestudy2
+                name: casestudy1
                 key: clientid
           - name: AZURE_CLIENT_SECRET
             valueFrom:
               secretKeyRef:
-                name: casestudy2
+                name: casestudy1
                 key: clientsecret
           - name: AZURE_SUBSCRIPTION_ID
             valueFrom:
               secretKeyRef:
-                name: casestudy2
+                name: casestudy1
                 key: subscriptionid
           - name: AZURE_TENANT_ID
             valueFrom:
               secretKeyRef:
-                name: casestudy2
+                name: casestudy1
                 key: tenantid
                 
