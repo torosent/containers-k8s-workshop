@@ -491,4 +491,5 @@ OpenCover/
 hs_err_pid*
 
 .vscode
+!Docker-ACS/Labs/Exercise3/frontend/.vscode
 .DS_Store

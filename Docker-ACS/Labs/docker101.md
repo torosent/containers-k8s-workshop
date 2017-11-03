@@ -341,7 +341,7 @@ With the server is up and running you should see:
 
 ```bash
 root@ce58744b24f3:/go/src/backend# go build .
-root@ce58744b24f3:/go/src/backend# ./server
+root@ce58744b24f3:/go/src/backend# ./backend
 Hooking up hanlders...
 Running server...
 ```
