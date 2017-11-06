@@ -304,12 +304,12 @@ Run the following to launch a container with the golang tooling and mount the cu
 ```bash
 docker run -ti --rm -v $(pwd):/go/src/test/backend golang
 ```
-> On windows use the `%cd%` to get your current directory
+> On windows, when in Command Prompt, use the `%cd%` to get your current directory. The bash command should work as expected under powershell. 
 
+Command Prompt:
 ```bash
 docker run -ti --rm -v %cd%:/go/src/test/backend golang
 ``` 
-
 
 Now let’s do a build
 
@@ -376,9 +376,10 @@ Let’s try it.
 1.	CTRL+Shift+B (Windows) or CMD+Shift+B (Mac) to build and start your container
 2.	Wait for that to complete
 3.	Press F5 to start debugging
-4.	Open ‘app.js’ and set a breakpoint on Line 5 
-5.	Change some of the words in the string on Line 8 and save the file
-6.	See how the breakpoint is hit!
+4.  Browse the site at [http://localhost:8182](http://localhost:8182)
+5.	Open ‘app.js’ and set a breakpoint on Line 5 
+6.	Change some of the words in the string on Line 8 and save the file
+7.	See how the breakpoint is hit!
 
 #### How did that work?
 
