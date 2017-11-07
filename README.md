@@ -23,12 +23,13 @@ docker101.docx - Create MyFirstApp container and deploy to Azure Web App on Linu
 
 1. Hello-World - deployment with versions. - `https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/`
 2. Persistent-Storage - deploy Wordpress, MySQL with external storage - `https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/`
-3. Microservices - deployment,scale and versioning of microservice app.
-4. Helm - deployment of helm chart
-5. DataDog Monitoring - deployment of datadog helm chart.
-6. Jenkins - Install Jenkins with ACS and Docker plugins
-7. Jenkins-Pipeline - CI/CD.
-8. Secrets-Configmaps - deploy pods with config maps
+3. Helm - deployment of helm chart
+4. DataDog Monitoring - deployment of datadog helm chart.
+5. Jenkins - Install Jenkins with ACS and Docker plugins
+6. Jenkins-Pipeline - CI/CD.
+7. Secrets-Configmaps - deploy pods with config maps
+8. Microservices - deployment,scale and versioning of microservice app.
+
 
 
 ### Labs
