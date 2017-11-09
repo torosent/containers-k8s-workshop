@@ -283,7 +283,7 @@ We’ll build and run the golang backend easily using the golang container then 
 At a terminal navigate to the directory for the backend
 
 ```bash
-cd [location of labs git here]/Day1/Labs/Exercise3/backend
+cd [location of labs git here]/Docker-ACS/Labs/Exercise3/frontend/
 ```
 Let’s look at our backend code using vscode, run the following
 
@@ -304,12 +304,12 @@ Run the following to launch a container with the golang tooling and mount the cu
 ```bash
 docker run -ti --rm -v $(pwd):/go/src/test/backend golang
 ```
-> On windows use the `%cd%` to get your current directory
+> On windows, when in Command Prompt, use the `%cd%` to get your current directory. The bash command should work as expected under powershell. 
 
+Command Prompt:
 ```bash
 docker run -ti --rm -v %cd%:/go/src/test/backend golang
 ``` 
-
 
 Now let’s do a build
 
@@ -364,7 +364,7 @@ Now let’s get the frontend setup, surprise surprise we’ll run this in a cont
 Open the directory and start VSCode
 
 ```bash
-cd [location of labs git repo]/Day1/Labs/Exercise3/frontend
+cd [location of labs git repo]/Docker-ACS/Labs/Exercise3/frontend/
 code .
 ```
 We’ve got a fairly simple nodejs app, you can have a look at ‘app.js’ but don’t worry too much for now. 
@@ -376,9 +376,10 @@ Let’s try it.
 1.	CTRL+Shift+B (Windows) or CMD+Shift+B (Mac) to build and start your container
 2.	Wait for that to complete
 3.	Press F5 to start debugging
-4.	Open ‘app.js’ and set a breakpoint on Line 5 
-5.	Change some of the words in the string on Line 8 and save the file
-6.	See how the breakpoint is hit!
+4.  Browse the site at [http://localhost:8182](http://localhost:8182)
+5.	Open ‘app.js’ and set a breakpoint on Line 5 
+6.	Change some of the words in the string on Line 8 and save the file
+7.	See how the breakpoint is hit!
 
 #### How did that work?
 
@@ -423,7 +424,7 @@ To make this easier to use we’ve setup these commands as build tasks in VSCode
         {
             "taskName": "Run Container",
             "type": "shell",            
-            "command": "docker run --rm -v $(pwd):/code -p 8182:8000 -p 9339:9339 --name debuginstance debugimage nodemon --inspect-brk=0.0.0.0:9339",
+            "command": "docker run --rm -v ${workspaceRoot}:/code -p 8182:8000 -p 9339:9339 --name debuginstance debugimage nodemon --inspect-brk=0.0.0.0:9339",
             "isBackground": true,
             "promptOnClose": true,
             "dependsOn": [
@@ -433,6 +434,8 @@ To make this easier to use we’ve setup these commands as build tasks in VSCode
   ]
 }}
 ```
+
+> In the command `${workspaceRoot}` inserts the directory you currently have open in VSCode, `[lab git location]/Docker-ACS/Labs/Exercise3/frontend/`. This replaces `${PWD}` or `%CD%`, which we used earlier in the exercise. You can see the other variables available to you in VSCode task files [here](https://code.visualstudio.com/docs/editor/tasks#_variable-substitution)
 
 This file defines our default build task, so you can press CTRL+Shift+B (Windows) or CMD+Shift+B (Mac) to build and start your container. Try this now and see what happens. 
 
