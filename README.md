@@ -15,27 +15,28 @@
 
 ### Labs
 
-docker101.docx - Create MyFirstApp container and deploy to Azure Web App on Linux.
+docker101.md - Create MyFirstApp container and deploy to Azure Web App on Linux.
 
 ## Kubernetes
 
 ### Challenges
 
 1. Hello-World - deployment with versions. - `https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/`
-2. Persistent-Storage - deploy Wordpress, MySQL with external storage - `https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/`
-3. Helm - deployment of helm chart
-4. DataDog Monitoring - deployment of datadog helm chart.
-5. Jenkins - Install Jenkins with ACS and Docker plugins
-6. Jenkins-Pipeline - CI/CD.
-7. Secrets-Configmaps - deploy pods with config maps
-8. Microservices - deployment,scale and versioning of microservice app.
-
+2. MyFirstApp - deployment
+3. Secrets-Configmaps - deploy pods with config maps
+4. Persistent-Storage - deploy Wordpress, MySQL with external storage - `https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/`
+3. Helm - Deploy Joomla Helm chart
+5. DataDog Monitoring - Deploy datadog helm chart and montior the cluster.
+6. Jenkins - Install Jenkins helm chart
+7. Jenkins-Pipeline - Create StickerStore CI/CD. `git clone https://github.com/torosent/stickerstore.git`
+    7.1 Optional - Use VAMP with Jenkins to create Canary deployments
+8. Microservices - StickerStore Microservices application `https://github.com/torosent/k8s-workshop-microservices`
 
 
 ### Labs
 
-1. CaseStudy 1 - Microservices, Casestudy1.docx `https://github.com/torosent/k8s-workshop-microservices`
-2. CaseStudy 2 - Data, Casestudy2.docx
+1. CaseStudy 1 - Auto scale an app
+2. CaseStudy 2 - Data, Using Event Hub Processing Host In K8s
 
 ## Setup SSH port forwarding examples
 
