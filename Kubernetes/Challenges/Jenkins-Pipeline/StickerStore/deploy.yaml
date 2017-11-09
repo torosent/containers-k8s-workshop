@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: stickerstore-deployment
+spec:
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: stickerstore
+    spec:
+      containers:
+      - name: webstore
+        image: torosent/stickerstore:$APP_VERSION
+        ports:
+        - containerPort: 3000

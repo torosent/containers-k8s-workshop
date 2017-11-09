@@ -1,0 +1,66 @@
+podTemplate(label: 'mypod', containers: [
+    containerTemplate(name: 'docker', image: 'docker', ttyEnabled: true, command: 'cat'),
+    containerTemplate(name: 'node', image: 'node', ttyEnabled: true, command: 'cat'),
+     containerTemplate(name: 'curl', image: 'tutum/curl:alpine', ttyEnabled: true, command: 'cat')
+  ],
+  volumes: [
+    hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
+  ]) {
+    node('mypod') {
+        def gitRepo = 'https://github.com/torosent/stickerstore/'
+        def dockerRepo = 'torosent'
+        def dockerHubCredId = 'dockerhub'
+        def dockerImageName = 'stickerstore'
+        def vampDeploymentName = 'stickerstore'
+        def vampHost = 'http://vamp:8080'
+        def appVersion
+
+    currentBuild.result = "SUCCESS"
+
+    try {
+        stage('Checkout'){
+            container('node') {
+            git url: gitRepo, branch: 'master'
+            appVersion = sh (
+                script: 'node -p -e "require(\'./package.json\').version"', 
+                returnStdout: true
+            ).trim()   
+            }  
+        }
+        stage('Build Docker image') {
+            container('docker') {
+                sh  """
+                    docker build -t ${dockerRepo}/${dockerImageName}:${appVersion} .
+                    docker tag ${dockerRepo}/${dockerImageName}:${appVersion} ${dockerRepo}/${dockerImageName}:latest
+                    """
+            }
+        }
+        stage('Push Docker image') {
+            container('docker') {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', 
+                        credentialsId: dockerHubCredId,
+                        usernameVariable: 'DOCKER_HUB_USER', 
+                        passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
+                            sh """
+                            docker login -u ${env.DOCKER_HUB_USER} -p ${env.DOCKER_HUB_PASSWORD}
+                            docker push ${dockerRepo}/${dockerImageName}:latest
+                            docker push ${dockerRepo}/${dockerImageName}:${appVersion}
+                            """
+                        }
+            }
+        }
+        stage('Deploy to Vamp') {
+            container('curl') {
+            sh "curl -X POST --data-binary @vamp_blueprint.yml ${vampHost}/api/v1/blueprints -H 'Content-Type: application/x-yaml'"
+            sh "curl -X PUT --data-binary @vamp_blueprint.yml ${vampHost}/api/v1/deployments/stickerstore -H 'Content-Type: application/x-yaml'"
+            sh "curl -X PUT --data-binary @vamp_gateway.yml ${vampHost}/api/v1/gateways/stickerstore/stickerstore/web -H 'Content-Type: application/x-yaml'"
+        }  
+        }
+    
+    }
+    catch (err) {
+        currentBuild.result = "FAILURE"
+        throw err
+    }
+}
+  }

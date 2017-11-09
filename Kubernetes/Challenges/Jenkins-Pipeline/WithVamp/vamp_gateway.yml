@@ -1,0 +1,7 @@
+name: stickerstore/stickerstore/web
+port: 8888/http           # external gateway to expose
+routes:
+  stickerstore/stickerstore/stickerstore:1.1.0/web:
+    weight: 50%
+  stickerstore/stickerstore/stickerstore:1.0.0/web:
+    weight: 50%

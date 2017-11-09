@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: stickerstore
+  labels:
+   app: stickerstore
+spec:
+  selector:
+    app: stickerstore
+  ports:
+  - protocol: "TCP"
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer

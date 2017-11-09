@@ -1,0 +1,19 @@
+name: stickerstore:1.0.0
+clusters:
+  stickerstore:
+    services:
+      breed:
+        name: stickerstore:1.0.0
+        deployable: torosent/stickerstore:1.0.0
+        ports:
+          web: 3000/http
+      scale:
+        cpu: 0.5
+        memory: 512MB
+        instances: 1
+      health_checks:
+        initial_delay: 10s
+        port: web
+        timeout: 5s
+        interval: 10s
+        failures: 10       

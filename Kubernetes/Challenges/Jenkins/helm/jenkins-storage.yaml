@@ -1,0 +1,15 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: jenkins-pv-claim
+  labels:
+    app: jenkins
+  annotations: 
+    volume.beta.kubernetes.io/storage-class: managed-premium
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 32Gi
+---
