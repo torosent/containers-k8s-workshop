@@ -51,7 +51,7 @@ podTemplate(label: 'mypod', containers: [
             }
         }
         stage('Deploy tp K8S') {
-            acsDeploy azureCredentialsId: azureCredentialsId, configFilePaths: 'deploy.yaml', containerService: containerService, dcosDockerCredentialsPath: '', enableConfigSubstitution: true, resourceGroupName: resourceGroupName, secretName: '', sshCredentialsId: sshCredentialsId
+            acsDeploy azureCredentialsId: azureCredentialsId, configFilePaths: 'service.yaml,deploy.yaml', containerService: containerService, dcosDockerCredentialsPath: '', enableConfigSubstitution: true, resourceGroupName: resourceGroupName, secretName: '', sshCredentialsId: sshCredentialsId
         }
     }
     catch (err) {
