@@ -1,5 +1,5 @@
 @REM create resource group
-az group create --name myResourceGroup --location westeurope
+az group create --name myResourceGroup --location westus
 
 @REM create aci 
 az container create --name mycontainer --image tutum/hello-world --resource-group myResourceGroup --ip-address public --ports 80
