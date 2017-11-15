@@ -9,7 +9,7 @@ import (
 
 func shouldbemain() {
 
-	fmt.Println("Hooking up hanlders...")
+	fmt.Println("Hooking up handlers...")
 
 	http.HandleFunc("/bar", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
