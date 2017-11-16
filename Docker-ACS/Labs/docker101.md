@@ -3,6 +3,7 @@
 ``` A few of these excerises are from https://github.com/docker/docker.github.io ```
 
 In the past, if you were to start writing a Python app, your first order of business was to install a Python runtime onto your machine. But, that creates a situation where the environment on your machine has to be just so in order for your app to run as expected; ditto for the server that runs your app.
+
 With Docker, you can just grab a portable Python runtime as an image, no installation necessary. Then, your build can include the base Python image right alongside your app code, ensuring that your app, its dependencies, and the runtime, all travel together.
 These portable images are defined by something called a Dockerfile.
 
@@ -283,7 +284,7 @@ We’ll build and run the golang backend easily using the golang container then 
 At a terminal navigate to the directory for the backend
 
 ```bash
-cd [location of labs git here]/Docker-ACS/Labs/Exercise3/frontend/
+cd [location of labs git here]/Docker-ACS/Labs/Exercise3/backend/
 ```
 Let’s look at our backend code using vscode, run the following
 
@@ -330,9 +331,9 @@ runtime.main_main·f: undefined: "main.main"
 
 We’ve got a typo in our golang file. Switch back to VSCode and in ‘server.go’ change the function name ‘shouldbemain’ to ‘main’ and save the file. 
 
-As the directory is mounted into our container we can now simple rerun the build command to see if our fix worked. Let’s rebuild and run the backend:
+As the directory is mounted into our container we can now simple rerun the build command in the container's shell session to see if our fix worked. Let’s rebuild and run the backend:
 
-´´´bash
+```bash
 go build .
 ./backend
 ```
@@ -342,11 +343,11 @@ With the server is up and running you should see:
 ```bash
 root@ce58744b24f3:/go/src/backend# go build .
 root@ce58744b24f3:/go/src/backend# ./backend
-Hooking up hanlders...
+Hooking up handlers...
 Running server...
 ```
 
-How we’ve fixed the bug let’s use the dockerfile*  to build a docker image and use this to run the backend. Use ‘ctrl-c’ and then ‘exit’ to leave golang tools container. Now build the docker file:
+How we’ve fixed the bug let’s use the dockerfile*  to build a docker image and use this to run the backend. Use ‘ctrl-c’ and then ‘exit’ to leave golang tools container, and return to the host. Now build the docker file:
 
 > *This file uses the golang container to build our application then copies the binary into a new container, which doesn’t contain all the golang build tools. This keeps the container image nice and small for speedy deployments. 
 
