@@ -5,7 +5,7 @@ SET acsname=myDCOSCluster
 
 
 @REM create resource group
-az group create --name  %rg% --location northeurope
+az group create --name  %rg% --location west US
 
 @REM create dcos with generate keys
 @REM az acs create --orchestrator-type dcos --resource-group %rg% --name  %acsname% --generate-ssh-keys --agent-count 1

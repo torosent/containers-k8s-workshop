@@ -4,7 +4,7 @@
     "container": {
       "type": "DOCKER",
       "docker": {
-        "image": "torosent/myfirstapp",
+        "image": "pierreroman/get-started",
         "network": "BRIDGE",
         "portMappings": [
           {

@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func shouldbemain() {
+func main() {
 
 	fmt.Println("Hooking up hanlders...")
 

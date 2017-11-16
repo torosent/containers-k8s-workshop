@@ -7,7 +7,7 @@ kubectl create -f configmap.yaml
 kubectl get configmaps test-configmap -o yaml
 
 # Use the env-pod.yaml file to create a Pod that consumes the ConfigMap in environment variables.
-kubectl create -f docs/user-guide/configmap/env-pod.yaml
+kubectl create -f env-pod.yaml
 
 # This pod runs the env command to display the environment of the container:
 kubectl logs config-env-test-pod
