@@ -283,7 +283,7 @@ We’ll build and run the golang backend easily using the golang container then 
 At a terminal navigate to the directory for the backend
 
 ```bash
-cd [location of labs git here]/Docker-ACS/Labs/Exercise3/frontend/
+cd [location of labs git here]/Docker-ACS/Labs/Exercise3/backend/
 ```
 Let’s look at our backend code using vscode, run the following
 

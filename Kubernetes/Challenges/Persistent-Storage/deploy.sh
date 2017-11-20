@@ -5,7 +5,7 @@ kubectl create -f deployment-storage.yaml
 kubectl get pv
 
 # add secret for MySQL
-kubectl create secret generic mysql-pass --from-literal=password=YOUR_PASSWORD
+kubectl create secret generic mysql-pass --from-literal=password=P@ssw0rd1234
 kubectl get secrets
 
 # deploy MySQL

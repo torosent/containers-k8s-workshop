@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: myfirstapp
-        image: torosent/myfirstapp:latest
+        image: pierreroman/get-started:part2
         ports:
         - containerPort: 80
 
