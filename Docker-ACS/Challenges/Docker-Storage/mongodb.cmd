@@ -4,4 +4,4 @@ docker ps -a
 docker rm mongodb
 
 @REM windows
-docker run --name mongodb -v /c/MongoDBData:/data/db -d mongo
+docker run -d --name mongodb --mount source=MongoDBData,target=/data/db mongo
