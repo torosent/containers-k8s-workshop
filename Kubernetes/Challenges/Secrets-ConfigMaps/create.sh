@@ -19,7 +19,7 @@ kubectl create -f command-pod.yaml
 kubectl logs config-cmd-test-pod
 
 # Use the volume-pod.yaml file to create a Pod that consume the ConfigMap in a volume.
-kubectl create -f docs/user-guide/configmap/volume-pod.yaml
+kubectl create -f volume-pod.yaml
 
 # This pod runs a cat command to print the value of one of the keys in the volume:
 kubectl logs config-volume-test-pod
