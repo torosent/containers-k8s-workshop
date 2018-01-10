@@ -299,7 +299,7 @@ To make this easier we’ll use a docker containers the tools to build and run t
 
 Run the following to launch a container with the golang tooling and mount the current directory into the container.
 
->In the command below we use $(pwd) to insert the current working directory into the volume mount command. It’s the same as manually doing ‘-v /current/directory/here:/go/src/test/backend’
+>In the command below we use $(pwd) to insert the current working directory into the volume mount command. It’s the same as manually doing ‘-v /current/directory/here:/go/src/test/backend’. Plus, make sure not to use Git Bash.
 
 ```bash
 docker run -ti --rm -v $(pwd):/go/src/test/backend golang
