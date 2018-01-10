@@ -332,7 +332,7 @@ We’ve got a typo in our golang file. Switch back to VSCode and in ‘server.go
 
 As the directory is mounted into our container we can now simple rerun the build command to see if our fix worked. Let’s rebuild and run the backend:
 
-´´´bash
+```bash
 go build .
 ./backend
 ```
