@@ -20,7 +20,7 @@
         {
             "label": "Run Container",
             "type": "shell",
-            "command": "docker run --rm -p 8182:8000 -p 9339:9339 --name debuginstance debugimage nodemon -L --inspect-brk=0.0.0.0:9339",
+            "command": "docker run --rm -v \"${workspaceRoot}:/code\" -p 8182:8000 -p 9339:9339 --name debuginstance debugimage nodemon -L --inspect-brk=0.0.0.0:9339",
             "isBackground": true,
             "promptOnClose": true,
             "dependsOn": [
@@ -34,6 +34,9 @@
             "dependsOn": [
                 "Run Container"
             ],
+            "options": {
+                
+            },
             "group": {
                 "kind": "build",
                 "isDefault": true
