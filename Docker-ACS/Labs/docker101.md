@@ -383,27 +383,37 @@ Let’s try it.
 
 #### How did that work?
 
-In the dockerfile, as with python earlier, we install our dependencies and copy in our code. 
+In the `Dockerfile`, as with python earlier, we install our dependencies and copy in our code. 
 
 ```bash
 FROM node:8.2.1-alpine
 
+RUN mkdir code
 WORKDIR /code
 
 RUN npm install -g nodemon@1.11.0
 
-COPY package.json /code/package.json
-RUN npm install && npm ls
-RUN mv /code/node_modules /node_modules
-
 COPY . /code
+RUN npm install 
+
+RUN mv /code/node_modules /node_modules
 
 CMD ["npm", "start"]
 ```
 
-We use the ‘nodemon’ tool which will run our node app and restart it each time one of the source files changes. We’ll use the same trick as we in our golang example to mount our current directory so edits in VSCode affect the container. 
+This set of instructions mean:
 
-By default, our container doesn’t run using nodemon as you wouldn’t want this in production, instead the ‘CMD’ statement uses npm to launch the app normally. We’re going to override this behavior by passing a command when we call ‘docker run’.
+1. `RUN npm install -g nodemon@1.11.0`: install `nodemon` which enables remote debugging of the node process (it will not run unless we specifically execute it - via the `launch.json` specifications).
+2. `COPY . /code`: Copy all the development environment files to the container.
+3. `RUN npm install`: Install all node dependencies
+4. `RUN mv /code/node_modules /node_modules`: Move `node_modules` to the root folder - This way:
+    1. If this is production execution, node wil search for this directory up the hierarchy
+    2. If this is development, the `node_modules` will be shared via the `docker run` command and the `-v` parameter.
+5. `CMD ["npm", "start"]`: In production, this line will simply start the node application. In development, this will be overriden by running nodemon.
+
+We use the [nodemon](https://nodemon.io/) tool which will run our node app and restart it each time one of the source files changes. We’ll use the same trick as we in our golang example to mount our current directory so edits in VSCode affect the container. 
+
+By default, our container doesn’t run using nodemon as you wouldn’t want this in production, instead the `CMD` statement uses npm to launch the app normally. We’re going to override this behavior by passing a command when we call ‘docker run’.
 
 To make this easier to use we’ve setup these commands as build tasks in VSCode. If you look at ‘.vscode/tasks.json’ you will see the following: 
 
@@ -424,7 +434,7 @@ To make this easier to use we’ve setup these commands as build tasks in VSCode
         {
             "taskName": "Run Container",
             "type": "shell",            
-            "command": "docker run --rm -v ${workspaceRoot}:/code -p 8182:8000 -p 9339:9339 --name debuginstance debugimage nodemon --inspect-brk=0.0.0.0:9339",
+            "command": "docker run --rm -v \"${workspaceRoot}:/code\" -p 8182:8000 -p 9339:9339 --name debuginstance debugimage nodemon --inspect-brk=0.0.0.0:9339",
             "isBackground": true,
             "promptOnClose": true,
             "dependsOn": [
@@ -442,12 +452,12 @@ This file defines our default build task, so you can press CTRL+Shift+B (Windows
 The first section builds the container from the docker file. 
 
 The second section runs the docker container in the background, the arguments do as follows:
-1.	‘-v’ mounts the current directory into the container so code changes in VSCode are available in the container
-2.	‘-p’ to exposing the port for the web app and the debugger. 
-3.	‘debugcontainer’ specifies the image name to use
-4.	‘nodemon –--inspect-brk=9229’  will get executed inside the container when it starts. It starts nodemon and the debugger. 
+1.	`-v` mounts the current directory into the container so code changes in VSCode are available in the container
+2.	`-p` to exposing the port for the web app and the debugger. 
+3.	`debugimage` specifies the image name to use
+4.	`nodemon --inspect-brk=9229`  will get executed inside the container when it starts. It starts nodemon and the debugger. 
 
-Now let’s take a look at ‘.vscode/launch.json’ this file defines how VSCode debugs your application. 
+Now let’s take a look at `.vscode/launch.json` this file defines how VSCode debugs your application. 
 
 ```json
    {
@@ -468,6 +478,4 @@ Now let’s take a look at ‘.vscode/launch.json’ this file defines how VSCod
     }
 ```
 
-Here, VSCode will use node and it should attach to the debugger on port 9339. Also, VSCode will know where the source files are stored in the container with the `remoteRoot` property. This is crucial, as it allows VSCode to map break points from the editor to the code running in the container. 
-
-
+Here, VSCode will use node and it should attach to the debugger on port 9339. Also, VSCode will know where the source files are stored in the container with the `remoteRoot` property. This is crucial, as it allows VSCode to map break points from the editor to the code running in the container.
