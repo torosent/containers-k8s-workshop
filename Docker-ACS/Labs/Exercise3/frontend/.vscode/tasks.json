@@ -4,19 +4,23 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "Build Container",
-            "type": "shell",
-            "command": "docker build . -t debugimage"
-        },
-        {
-            "taskName": "Stop Container",
+            // In case there's a docker container running, make sure to remove it
+            "label": "Stop Container",
             "type": "shell",
             "command": "docker rm -f debuginstance"
         },
         {
-            "taskName": "Run Container",
-            "type": "shell",            
-            "command": "docker run --rm -v ${workspaceRoot}:/code -p 8182:8000 -p 9339:9339 --name debuginstance debugimage nodemon -L --inspect-brk=0.0.0.0:9339",
+            "label": "Build Container",
+            "type": "shell",
+            "command": "docker build . -t debugimage",
+            "dependsOn": [
+                "Stop Container"
+            ]
+        },
+        {
+            "label": "Run Container",
+            "type": "shell",
+            "command": "docker run --rm -p 8182:8000 -p 9339:9339 --name debuginstance debugimage nodemon -L --inspect-brk=0.0.0.0:9339",
             "isBackground": true,
             "promptOnClose": true,
             "dependsOn": [
@@ -24,8 +28,9 @@
             ]
         },
         {
-            "taskName": "Build and Run Container",
+            "label": "Build and Run Container",
             "type": "shell",
+            "command": "echo \"build & run completed\"",
             "dependsOn": [
                 "Run Container"
             ],

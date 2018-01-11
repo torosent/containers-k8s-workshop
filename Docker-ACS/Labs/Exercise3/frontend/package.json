@@ -1,5 +1,11 @@
 {
     "main": "app.js",
+    "repository": {
+        "type" : "git",
+        "url": "https://github.com/torosent/containers-k8s-workshop"
+    },
+    "license": "MIT",
+    "description": "This is the front end application we run in the container",
     "dependencies": {
         "express": "~4.14.0",
         "express-handlebars": "~3.0.0"

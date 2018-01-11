@@ -287,7 +287,7 @@ cd [location of labs git here]/Docker-ACS/Labs/Exercise3/backend/
 ```
 Let’s look at our backend code using vscode, run the following
 
-```
+```bash
 code .
 ```
 
@@ -346,7 +346,7 @@ Hooking up hanlders...
 Running server...
 ```
 
-How we’ve fixed the bug let’s use the dockerfile*  to build a docker image and use this to run the backend. Use ‘ctrl-c’ and then ‘exit’ to leave golang tools container. Now build the docker file:
+Now that we’ve fixed the bug, let’s use the dockerfile*  to build a docker image and use this to run the backend. Press ‘ctrl-c’ to stop the go server from running then type ‘exit’ to leave golang tools container. Now build the docker file:
 
 > *This file uses the golang container to build our application then copies the binary into a new container, which doesn’t contain all the golang build tools. This keeps the container image nice and small for speedy deployments. 
 
@@ -359,9 +359,9 @@ Open a browser and test the service by hitting [http://localhost:8181/bar](http:
 
 ### Build and Debug the Frontend (Adapted from [Docker-tools lab](https://github.com/docker/labs/blob/master/developer-tools/nodejs-debugging/VSCode-README.md))
 
-Now let’s get the frontend setup, surprise surprise we’ll run this in a container. In the frontend, let’s pretend there a more complex bug which we’ll need to debug through VSCode. 
+Next, let’s setup the frontend, and, surprise surprise, we’ll run this in a container. In the frontend, let’s pretend there's a more complex bug which we’ll need to debug through VSCode. 
 
-Open the directory and start VSCode
+Open the directory and start VSCode:
 
 ```bash
 cd [location of labs git repo]/Docker-ACS/Labs/Exercise3/frontend/
