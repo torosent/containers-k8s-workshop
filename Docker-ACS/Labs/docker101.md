@@ -188,7 +188,7 @@ No matter where docker run executes, it pulls your image, along with Python and 
 ## Exercise 2 - Deploy to Web App on Linux
 
 Checklist
-  * AzureCLI installed - [Guide here](C:\JDA\DX\_FY18\LDNContainers\containers-k8s-workshop\Day1\Labs\Guide here)
+  * AzureCLI installed - [Guide here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
   * Login with Azure CLI - [Guide Here](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
   * Select the correct Azure Subscription, if you have access to multiple - Guide here 
   * Login to Azure CLI using az login. Make sure you set the subscription as well. Tip: Login with Service Principal.
