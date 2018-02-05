@@ -346,7 +346,7 @@ Hooking up hanlders...
 Running server...
 ```
 
-How we’ve fixed the bug let’s use the dockerfile*  to build a docker image and use this to run the backend. Use ‘ctrl-c’ and then ‘exit’ to leave golang tools container. Now build the docker file:
+Now that we’ve fixed the bug let’s use the dockerfile*  to build a docker image and use this to run the backend. Use ‘ctrl-c’ and then ‘exit’ to leave golang tools container. Now build the docker file:
 
 > *This file uses the golang container to build our application then copies the binary into a new container, which doesn’t contain all the golang build tools. This keeps the container image nice and small for speedy deployments. 
 
