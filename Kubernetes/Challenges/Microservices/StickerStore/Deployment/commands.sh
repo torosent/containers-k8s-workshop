@@ -12,6 +12,9 @@ docker push torosent/printingservice:1.0.0
 docker push torosent/statusservice:1.0.0
 docker push torosent/orderservice:1.0.0
 
+# create acr login
+kubectl create secret docker-registry SECRET_NAME --docker-server=REGISTRY_NAME.azurecr.io --docker-username=USERNAME --docker-password=PASSWORD --docker-email=ANY_VALID_EMAIL
+
 # create a secert
 kubectl create -f secret.yaml
 
