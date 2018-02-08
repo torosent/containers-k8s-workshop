@@ -35,8 +35,8 @@ spec:
           value: "http://orderservice/api/order"
         - name: STATUS_SERVICE
           value: "http://statusservice/api/status"
-        imagePullSecrets:
-        - name: SECRET_NAME
+      imagePullSecrets:
+      - name: SECRET_NAME
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -64,8 +64,8 @@ spec:
               secretKeyRef:
                 name: stickerstore
                 key: StorageConnectionString
-        imagePullSecrets:
-        - name: SECRET_NAME
+      imagePullSecrets:
+      - name: SECRET_NAME
 ---
 kind: Service
 apiVersion: v1
@@ -103,8 +103,8 @@ spec:
             secretKeyRef:
               name: stickerstore
               key: SBConnectionString
-        imagePullSecrets:
-        - name: SECRET_NAME
+      imagePullSecrets:
+      - name: SECRET_NAME
 ---
 kind: Service
 apiVersion: v1
@@ -142,8 +142,8 @@ spec:
             secretKeyRef:
               name: stickerstore
               key: StorageConnectionString
-        imagePullSecrets:
-        - name: SECRET_NAME
+      imagePullSecrets:
+      - name: SECRET_NAME
 
 
         
