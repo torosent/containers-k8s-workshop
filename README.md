@@ -29,7 +29,7 @@ docker101.md - Create MyFirstApp container and deploy to Azure Web App on Linux.
 5. DataDog Monitoring - Deploy datadog helm chart and montior the cluster.
 6. Jenkins - Install Jenkins helm chart
 7. Jenkins-Pipeline - Create StickerStore CI/CD Pipeline.  [Instructions](/Kubernetes/Challenges/Jenkins-Pipeline)
-8. Microservices - StickerStore Microservices application [Instructions](/Kubernetes/Challenges/Microservices/StickerStore)
+8. **Microservices - StickerStore Microservices application** [Instructions](https://github.com/torosent/k8s-workshop-microservices)
 
 
 ### Labs
