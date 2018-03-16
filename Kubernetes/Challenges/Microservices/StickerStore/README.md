@@ -1,4 +1,4 @@
-# **Deprecreted**
+# **Deprecated**
 ## Refer to [Microservices Challenge](https://github.com/torosent/k8s-workshop-microservices)
 
 ## Architecture
